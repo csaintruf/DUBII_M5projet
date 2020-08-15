@@ -1,0 +1,60 @@
+---
+title: "projet_Evaluation_M4_M5"
+author: "csr"
+date: "15/08/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(knitr)
+```
+# DU-Bii 2020 : Examen final Modules 4 et 5
+## Claude saint-Ruf
+### Analyse of resequencing data from Bacillus subtilis genome. (data download from "Complete Genome Sequences of 13 Bacillus subtilis Soil Isolates for Studying Secondary Metabolite Diversity" (doi:10.1128/MRA.01406-19)) 
+
+## worflow
+
+## Organisation du repertoire projet 
+```{bash, eval=FALSE}
+cd /shared/projects/dubii2020/csaintruf/miniPunix
+tree > repertoire.txt
+
+```
+
+```{bash, eval=TRUE}
+cat /shared/projects/dubii2020/csaintruf/miniPunix/repertoire.txt
+```
+## Telechargement des data dans le dossier data 
+* Genome de reference NC_000964( fichier gff (annotation) , fichier fasta (sequence NC_000964) )
+code:
+```{bash download_genome_reference, eval=FALSE }
+cd /shared/projects/dubii2020/csaintruf/miniPunix/data
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.gff.gz
+
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz 
+
+```
+* Resequencing data SRR10390685 puis compression des fichiers obtenues (paire-end : 2 fichiers fastq)
+```{bash download_SRR10390685, eval=FALSE}
+cd /shared/projects/dubii2020/csaintruf/miniPunix/data
+module load sra-tools
+srun fasterq-dump -S -p SRR10390685 --outdir . --threads 1
+gzip *.fastq
+```
+
+
+##Controle qualité des donnees brutes (reads)
+
+controle de la qualité des fastq avec fastqC : les lignes de commande se trouvent dans le script fastqc_miniPunix.sh
+```{bash}
+cat /shared/projects/dubii2020/csaintruf/miniPunix/fastqc_miniPunix.sh
+```
+
+```{r}
+
+```
+

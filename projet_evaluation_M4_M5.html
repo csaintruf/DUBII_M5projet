@@ -11,7 +11,7 @@
 
 <meta name="author" content="Claude Saint-Ruf" />
 
-<meta name="date" content="2020-08-24" />
+<meta name="date" content="2020-08-31" />
 
 <title>Projet_Evaluation_M4_M5</title>
 
@@ -1648,7 +1648,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Projet_Evaluation_M4_M5</h1>
 <h4 class="author">Claude Saint-Ruf</h4>
-<h4 class="date">2020-08-24</h4>
+<h4 class="date">2020-08-31</h4>
 
 </div>
 
@@ -1905,9 +1905,15 @@ srun fastqc --quiet ${FASTQ_FILES[$SLURM_ARRAY_TASK_ID]} -o ${output_dir} </code
 <h2>2 -Nettoyage des reads</h2>
 <div id="question-quel-pourcentage-de-reads-sont-filtrés-et-pourquoi" class="section level3">
 <h3><strong>Question: Quel pourcentage de reads sont filtrés et pourquoi ?</strong></h3>
-<div id="réponse-daprès-les-analyses-fastp-974-des-reads-ont-répondu-aux-exigences-de-qualité-rapport-fastp-et-figure-6." class="section level4">
-<h4><strong>Réponse: D’après les analyses fastP, 97,4% des reads ont répondu aux exigences de qualité (rapport fastp et Figure 6)</strong>.</h4>
-<p>Pour rappel: il s’agit des reads avec une qualité moyenne &gt;Q20 (99% de base corretement identifié) par fenêtre de 4 bases et &gt;Q15 pour 40% du read ainsi que la filtration des reads d’une longueur &gt;60pb ). Les reads non retenus sont essentiellement des reads de qualité insuffisante (2,5%) . 4098 reads ont trop de N (bases non identifiables)</p>
+<div id="réponse-daprès-les-analyses-fastp-974-des-reads-ont-répondu-aux-exigences-de-qualité-26-des-reads-ne-vont-pas-être-retenus-rapport-fastp-et-figure-6." class="section level4">
+<h4><strong>Réponse: D’après les analyses fastP, 97,4% des reads ont répondu aux exigences de qualité, 2,6 % des reads ne vont pas être retenus (rapport fastp et Figure 6)</strong>.</h4>
+<p>fastp va retenir les reads ayant une qualité moyenne &gt;Q20 (99% bases correctement identifiées) par fenêtre de 4 bases et &gt;Q15 pour 40% du read et ayant une longueur &gt;60pb.</p>
+<ul>
+<li>les reads non retenus sont les suivant:</li>
+<li>2,5% des reads n’ont pas la qualité attendue (low quality).</li>
+<li>0,029% des reads contiennent trop de N (base non identifiée)</li>
+<li>0,02% des reads non retenus sont trop courts.</li>
+</ul>
 </div>
 <div id="rapport-fastp" class="section level4">
 <h4><strong>Rapport fastp</strong></h4>

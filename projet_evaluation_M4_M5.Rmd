@@ -229,9 +229,14 @@ Depth
 ## 2 -Nettoyage des reads
 ### **Question: Quel pourcentage de reads sont filtrés et pourquoi ?**
 
-#### **Réponse: D'après les analyses fastP,  97,4% des reads ont répondu aux exigences de qualité (rapport fastp et Figure 6)**.
+#### **Réponse: D'après les analyses fastP,  97,4% des reads ont répondu aux exigences de qualité, 2,6 % des reads ne vont pas être retenus (rapport fastp et Figure 6)**.
 
-Pour rappel: il s'agit des reads avec une qualité moyenne >Q20 (99% de base corretement identifié) par fenêtre de 4 bases et >Q15 pour 40% du read ainsi que la filtration des reads d'une longueur  >60pb ). Les reads non retenus sont essentiellement des reads de qualité insuffisante (2,5%) . 4098 reads ont trop de N (bases non identifiables) 
+fastp va retenir les reads ayant une qualité moyenne >Q20 (99%  bases correctement identifiées) par fenêtre de 4 bases et >Q15 pour 40% du read et ayant une longueur  >60pb.
+
+* les reads non retenus sont les suivant: 
++ 2,5% des reads  n'ont pas la qualité attendue (low quality).
++ 0,029% des reads contiennent trop de N (base non identifiée) 
++ 0,02% des reads non retenus sont trop courts. 
 
 #### **Rapport fastp**
 ![](fastpreport3.png)
